@@ -76,11 +76,11 @@ class VideosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = Video.find(params[:id])
+      @video = Video.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:channel_id, :title, :score, :visible, :publicid, :playback_id, :policy, :mux_asset_id, :status, :max_stored_resolution, :max_stored_frame_rate, :duration, :aspect_ratio)
+      params.require(:video).permit(:channel_id, :title, :score, :visible, :publicid, :playback_id, :policy, :mux_asset_id, :status, :max_stored_resolution, :max_stored_frame_rate, :duration, :aspect_ratio, :file)
     end
 end
