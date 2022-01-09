@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :channel_id %>
-    <%= form.text_field :channel_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= form.hidden_field :publicid, value: SecureRandom.base58(10) %>
 
   <div class="my-5">
     <%= form.label :title %>
@@ -22,58 +19,8 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :score %>
-    <%= form.number_field :score, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :visible %>
-    <%= form.check_box :visible, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :publicid %>
-    <%= form.text_field :publicid, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :playback_id %>
-    <%= form.text_field :playback_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :policy %>
-    <%= form.text_field :policy, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :mux_asset_id %>
-    <%= form.text_field :mux_asset_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :status %>
-    <%= form.text_field :status, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :max_stored_resolution %>
-    <%= form.text_field :max_stored_resolution, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :max_stored_frame_rate %>
-    <%= form.text_field :max_stored_frame_rate, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :duration %>
-    <%= form.text_field :duration, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :aspect_ratio %>
-    <%= form.text_field :aspect_ratio, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :file %>
+    <%= form.file_field :file, multiple: true, direct_upload: true %>
   </div>
 
   <div class="inline">

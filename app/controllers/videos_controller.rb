@@ -22,9 +22,11 @@ class VideosController < ApplicationController
   # POST /videos or /videos.json
   def create
     @video = Video.new(video_params)
+    @video.channel_id = current_channel.id
 
     respond_to do |format|
       if @video.save
+        create_mux_video(@video)
         format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
         format.json { render :show, status: :created, location: @video }
       else
@@ -32,6 +34,20 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_mux_video(video)
+    assets_api = MuxRuby::AssetsApi.new
+    create_asset = MuxRuby::CreateAssetRequest.new
+    create_asset.input = url_for(video.file)
+    puts "MUX URL: #{create_asset.input}"
+    create_asset.playback_policy = [MuxRuby::PlaybackPolicy::PUBLIC]
+    create_response = assets_api.create_asset(create_asset)  
+    puts "MUX response playback id: #{create_response.data.playback_ids.first.id}"
+    video.playback_id = create_response.data.playback_ids.first.id
+    video.policy = create_response.data.playback_ids.first.policy
+    video.mux_asset_id = create_response.data.id
+    video.save
   end
 
   # PATCH/PUT /videos/1 or /videos/1.json
