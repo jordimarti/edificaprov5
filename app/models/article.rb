@@ -4,4 +4,6 @@ class Article < ApplicationRecord
   has_rich_text :content
   
   belongs_to :channel
+
+  validates :title, presence: true
 end

@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="https://unpkg.com/@mux/videojs-kit@0.6/dist/index.css">
     <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
     <%= javascript_importmap_tags %>
+
+    <%= favicon_link_tag asset_path('favicon_edificapro.ico') %>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main>
       <%= yield %>
     </main>
   </body>
