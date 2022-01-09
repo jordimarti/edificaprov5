@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :communities
+  resources :courses
   resources :webhooks, only: [:create]
   get 'accounts/switch'
   get 'accounts/select'

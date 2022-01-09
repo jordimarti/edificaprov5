@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_092012) do
+ActiveRecord::Schema.define(version: 2022_01_09_212059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,49 @@ ActiveRecord::Schema.define(version: 2022_01_09_092012) do
     t.index ["slug"], name: "index_channels_on_slug", unique: true
   end
 
+  create_table "communities", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.string "name"
+    t.string "privacy"
+    t.string "publicid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["channel_id"], name: "index_communities_on_channel_id"
+    t.index ["slug"], name: "index_communities_on_slug", unique: true
+  end
+
+  create_table "community_affiliations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["community_id"], name: "index_community_affiliations_on_community_id"
+    t.index ["user_id"], name: "index_community_affiliations_on_user_id"
+  end
+
+  create_table "course_affiliations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.string "role"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_affiliations_on_course_id"
+    t.index ["user_id"], name: "index_course_affiliations_on_user_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["channel_id"], name: "index_courses_on_channel_id"
+    t.index ["slug"], name: "index_courses_on_slug", unique: true
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -162,5 +205,11 @@ ActiveRecord::Schema.define(version: 2022_01_09_092012) do
   add_foreign_key "channel_affiliations", "channels"
   add_foreign_key "channel_affiliations", "users"
   add_foreign_key "channels", "accounts"
+  add_foreign_key "communities", "channels"
+  add_foreign_key "community_affiliations", "communities"
+  add_foreign_key "community_affiliations", "users"
+  add_foreign_key "course_affiliations", "courses"
+  add_foreign_key "course_affiliations", "users"
+  add_foreign_key "courses", "channels"
   add_foreign_key "videos", "channels"
 end
