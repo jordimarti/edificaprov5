@@ -64,6 +64,34 @@
     <%= video.aspect_ratio %>
   </p>
 
+  <p class="my-5">
+    <strong>Video:</strong>
+    <div class="h-auto">
+      <video
+  id="mux-default"
+  class="video-js vjs-16-9"
+  controls
+  preload="auto"
+  width="100%"
+  poster="https://image.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe/thumbnail.jpg"
+  data-setup='{
+    "timelineHoverPreviews": true,
+    "plugins": {
+      "mux": {
+        "data": {
+          "env_key": "ENV_KEY",
+          "video_title": "My Great Video"
+        }
+      }
+    }
+  }'
+>
+  <source src="<%= video.playback_id %>" type="video/mux" />
+</video>
+    </div>
+  </p>
+
+
   <% if action_name != "show" %>
     <%= link_to "Show this video", video, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this video', edit_video_path(video), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
