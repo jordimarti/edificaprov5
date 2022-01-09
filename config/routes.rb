@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :webhooks, only: [:create]
   get 'accounts/switch'
   get 'accounts/select'
   resources :articles
