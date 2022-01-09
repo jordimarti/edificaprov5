@@ -1,0 +1,10 @@
+<% @accounts.each do |account| %>
+  <div class="border-b border-gray-300">
+    <%= account.name %>
+    <% account.channels.each do |channel| %>
+      <div class="pl-4 border-b">
+        <%= link_to channel.name, accounts_switch_path(channel_id: channel.id) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

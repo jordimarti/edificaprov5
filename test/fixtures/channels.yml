@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  name: MyString
+  privacy: MyString
+  subscribers: 1
+  main_community: MyString
+
+two:
+  account: two
+  name: MyString
+  privacy: MyString
+  subscribers: 1
+  main_community: MyString

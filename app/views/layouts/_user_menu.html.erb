@@ -1,0 +1,25 @@
+<div class="inline-block text-sm px-4 py-2 leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">
+  <div class="relative" data-controller="dropdown">
+    <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
+      <span class="appearance-none flex items-center inline-block text-gray-700">
+        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=6OYDruMLGe&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      </span>
+    </div>
+    <div data-dropdown-target="menu" class="absolute right-0 mt-2 hidden">
+      <div class="bg-white shadow rounded border overflow-hidden w-64">
+        <div class="color-gray-500 px-8 pt-3"><span class="text-gray-400 text-xs">USUARI</span></div>
+        <div class="px-8 py-1 hover:bg-gray-300">
+          <%= link_to current_user.email,  edit_user_registration_path, data: {action: "click->dropdown#toggle"} %>
+        </div>
+        <div class="color-gray-500 px-8 pt-3"><span class="text-gray-400 text-xs">CANAL</span></div>
+        <div class="px-8 py-1 mb-2 hover:bg-gray-300">
+          <%= link_to current_channel.name, current_channel %>
+        </div>
+        <div class="border-t px-8 py-3 hover:bg-gray-300">
+          <%= link_to t('.change_account'), accounts_select_path %>
+        </div>
+        <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, data: {action: "click->dropdown#toggle"}, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+      </div>
+    </div>
+  </div>
+</div>

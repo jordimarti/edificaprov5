@@ -1,0 +1,65 @@
+    <div class="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200">
+      <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-900 lg:hidden">
+        <span class="sr-only">Open sidebar</span>
+        <!-- Heroicon name: outline/menu-alt-2 -->
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </button>
+      <div class="flex-1 px-4 flex justify-between">
+        <div class="flex-1 flex">
+
+          <%= form_tag articles_path, method: :get, class: "w-full flex lg:ml-0" do %>
+          
+            <label for="search_field" class="sr-only">Buscar</label>
+            <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+              <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                <!-- Heroicon name: solid/search -->
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <%= text_field_tag :s, nil, placeholder: "Buscar", id: "search_field", class: "block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm", type: "search", name: "search" %>
+              
+            </div>
+
+          <% end %>
+
+        </div>
+        <div class="ml-4 flex items-center md:ml-6">
+          <div class="inline-block text-sm px-4 py-2 leading-none rounded no-underline text-gray hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">
+            <div class="relative" data-controller="dropdown">
+              <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" data-dropdown-target="button" tabindex="0" class="inline-block select-none">
+                <button class="ml-1 p-1 rounded-full text-gray-600 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <svg class="h-6 w-6" x-description="Heroicon name: plus-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
+              </div>
+              <div data-dropdown-target="menu" class="absolute right-0 mt-2 hidden">
+                <div class="bg-white shadow rounded border overflow-hidden w-64">
+                  <%= link_to t('.new_video'), dashboard_videos_path, data: {action: "click->dropdown#toggle"}, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                  <%= link_to t('.new_article'), new_article_path, data: {action: "click->dropdown#toggle"}, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                  <%= link_to t('.new_course'), new_course_path, data: {action: "click->dropdown#toggle"}, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                  <%= link_to t('.new_community'), new_community_path, data: {action: "click->dropdown#toggle"}, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="ml-1 p-1 rounded-full text-gray-600 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <svg class="h-6 w-6" x-description="Heroicon name: bell" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+            </svg>
+          </button>
+
+          <% if current_user %>
+            <%= render ("layouts/user_menu") %>  
+          <% else %>
+            <div class="text-sm px-4 py-2">
+              <%= link_to t('.login'), new_user_session_path %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>

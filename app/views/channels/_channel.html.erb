@@ -1,0 +1,32 @@
+<div id="<%= dom_id channel %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Account:</strong>
+    <%= channel.account_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= channel.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Privacy:</strong>
+    <%= channel.privacy %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Subscribers:</strong>
+    <%= channel.subscribers %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Main community:</strong>
+    <%= channel.main_community %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this channel", channel, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this channel', edit_channel_path(channel), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
