@@ -1,0 +1,8 @@
+<div class="w-full">
+<%= turbo_frame_tag "comments_module" do %>
+  <div id="comments_<%= dom_id @video %>" class="min-w-full">
+    <%= render @video_comments %>
+  </div>
+  <%= turbo_frame_tag "new_video_comment", src: new_video_comment_path(video_id: @video.id) %>
+<% end %>
+</div>

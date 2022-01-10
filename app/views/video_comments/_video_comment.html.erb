@@ -1,0 +1,9 @@
+<div id="<%= dom_id video_comment %>">
+  <div>
+    <h5><%= video_comment.user.name %></h5>
+    <p><%= video_comment.content %></p>
+    <p><%= video_comment.video_comment_vote_count %></p>
+    <%= link_to "Up vote", video_comment_video_comment_votes_path(video_comment, choice: :up_vote, format: :trubo_stream) %>
+    <%= link_to "Down vote", video_comment_video_comment_votes_path(video_comment, choice: :down_vote, format: :trubo_stream) %>
+  </div>
+</div>

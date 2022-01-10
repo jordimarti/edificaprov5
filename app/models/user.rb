@@ -10,10 +10,11 @@ class User < ApplicationRecord
   has_many :accounts, through: :account_affiliations
   has_many :channel_affiliations
   has_many :channels, through: :channel_affiliations
-  #has_many :community_affiliations
-  #has_many :communities, through: :community_affiliations
-  #has_many :course_affiliations
-  #has_many :courses, through: :course_affiliations
+  has_many :community_affiliations
+  has_many :communities, through: :community_affiliations
+  has_many :course_affiliations
+  has_many :courses, through: :course_affiliations
+  has_many :video_comments, dependent: :destroy
 
   def name
     [first_name, last_name].compact.join(' ')

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :video_comments do
+    resource :video_comment_votes, only: :show
+  end
   get 'dashboard/index'
   get 'dashboard/videos'
   get 'dashboard/articles'

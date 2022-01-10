@@ -11,5 +11,8 @@
       <%= button_to 'Destroy this video', video_path(@video), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Back to videos', videos_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <%= turbo_stream_from :video_comments %>
+    <%= turbo_frame_tag "comments_module", src: video_comments_path(id: params[:id]) %>
   </div>
 </div>
