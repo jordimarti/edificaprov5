@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "course_items_module" do %>
+  <div id="items_<%= dom_id @course %>" class="min-w-full" data-controller="position">
+    <%= render @course_items %>
+  </div>
+  <%= turbo_frame_tag "new_course_item", src: new_course_item_path(course_id: @course.id) %>
+<% end %>

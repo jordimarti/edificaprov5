@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   async updatePosition(event) {
-    const response = await put('/course_items', {
+    const response = await put('/course_items/'+this.id, {
       body: JSON.stringify({
         sgid: event.item.dataset.sgid,
         position: event.newIndex + 1
