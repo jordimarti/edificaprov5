@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :question_comments do
+    resource :question_comment_votes, only: :show
+  end
+  resources :questions
+  resources :lesson_comments
+  resources :lessons
+  resources :community_comments do
+    resource :community_comment_votes, only: :show
+  end
+  resources :article_comments do
+    resource :article_comment_votes, only: :show
+  end
   resources :video_comments do
     resource :video_comment_votes, only: :show
   end

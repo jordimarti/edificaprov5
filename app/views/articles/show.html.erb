@@ -11,5 +11,8 @@
       <%= button_to 'Destroy this article', article_path(@article), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Back to articles', articles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  
+    <%= turbo_stream_from :article_comments %>
+    <%= turbo_frame_tag "comments_module", src: article_comments_path(id: params[:id]) %>
   </div>
 </div>

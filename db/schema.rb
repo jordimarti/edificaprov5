@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_083955) do
+ActiveRecord::Schema.define(version: 2022_01_10_210700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,25 @@ ActiveRecord::Schema.define(version: 2022_01_10_083955) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "article_comment_votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_comment_id", null: false
+    t.integer "choice", limit: 2, default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_comment_id"], name: "index_article_comment_votes_on_article_comment_id"
+    t.index ["user_id"], name: "index_article_comment_votes_on_user_id"
+  end
+
+  create_table "article_comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_article_comments_on_article_id"
+    t.index ["user_id"], name: "index_article_comments_on_user_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.bigint "channel_id", null: false
     t.string "title"
@@ -128,6 +147,25 @@ ActiveRecord::Schema.define(version: 2022_01_10_083955) do
     t.index ["user_id"], name: "index_community_affiliations_on_user_id"
   end
 
+  create_table "community_comment_votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_comment_id", null: false
+    t.integer "choice", limit: 2, default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_comment_id"], name: "index_community_comment_votes_on_article_comment_id"
+    t.index ["user_id"], name: "index_community_comment_votes_on_user_id"
+  end
+
+  create_table "community_comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["community_id"], name: "index_community_comments_on_community_id"
+    t.index ["user_id"], name: "index_community_comments_on_user_id"
+  end
+
   create_table "course_affiliations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
@@ -158,6 +196,51 @@ ActiveRecord::Schema.define(version: 2022_01_10_083955) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "lesson_comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_lesson_comments_on_lesson_id"
+    t.index ["user_id"], name: "index_lesson_comments_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.string "title"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
+  end
+
+  create_table "question_comment_votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_comment_id", null: false
+    t.integer "choice"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_comment_id"], name: "index_question_comment_votes_on_question_comment_id"
+    t.index ["user_id"], name: "index_question_comment_votes_on_user_id"
+  end
+
+  create_table "question_comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_question_comments_on_question_id"
+    t.index ["user_id"], name: "index_question_comments_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -220,6 +303,10 @@ ActiveRecord::Schema.define(version: 2022_01_10_083955) do
   add_foreign_key "account_affiliations", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "article_comment_votes", "article_comments"
+  add_foreign_key "article_comment_votes", "users"
+  add_foreign_key "article_comments", "articles"
+  add_foreign_key "article_comments", "users"
   add_foreign_key "articles", "channels"
   add_foreign_key "channel_affiliations", "channels"
   add_foreign_key "channel_affiliations", "users"
@@ -227,9 +314,21 @@ ActiveRecord::Schema.define(version: 2022_01_10_083955) do
   add_foreign_key "communities", "channels"
   add_foreign_key "community_affiliations", "communities"
   add_foreign_key "community_affiliations", "users"
+  add_foreign_key "community_comment_votes", "article_comments"
+  add_foreign_key "community_comment_votes", "users"
+  add_foreign_key "community_comments", "communities"
+  add_foreign_key "community_comments", "users"
   add_foreign_key "course_affiliations", "courses"
   add_foreign_key "course_affiliations", "users"
   add_foreign_key "courses", "channels"
+  add_foreign_key "lesson_comments", "lessons"
+  add_foreign_key "lesson_comments", "users"
+  add_foreign_key "lessons", "courses"
+  add_foreign_key "question_comment_votes", "question_comments"
+  add_foreign_key "question_comment_votes", "users"
+  add_foreign_key "question_comments", "questions"
+  add_foreign_key "question_comments", "users"
+  add_foreign_key "questions", "users"
   add_foreign_key "video_comment_votes", "users"
   add_foreign_key "video_comment_votes", "video_comments"
   add_foreign_key "video_comments", "users"

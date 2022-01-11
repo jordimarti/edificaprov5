@@ -1,0 +1,8 @@
+<div class="w-full">
+<%= turbo_frame_tag "comments_module" do %>
+  <div id="comments_<%= dom_id @article %>" class="min-w-full">
+    <%= render @article_comments %>
+  </div>
+  <%= turbo_frame_tag "new_article_comment", src: new_article_comment_path(article_id: @article.id) %>
+<% end %>
+</div>

@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :course_affiliations
   has_many :courses, through: :course_affiliations
   has_many :video_comments, dependent: :destroy
+  has_many :article_comments, dependent: :destroy
+  has_many :lesson_comments, dependent: :destroy
+  has_many :community_comments, dependent: :destroy
+  has_many :question_comments, dependent: :destroy
 
   def name
     [first_name, last_name].compact.join(' ')

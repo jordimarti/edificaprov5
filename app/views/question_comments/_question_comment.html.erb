@@ -1,0 +1,9 @@
+<div id="<%= dom_id question_comment %>">
+  <div>
+    <h5><%= question_comment.user.name %></h5>
+    <p><%= question_comment.content %></p>
+    <p><%= question_comment.question_comment_vote_count %></p>
+    <%= link_to "Up vote", question_comment_question_comment_votes_path(question_comment, choice: :up_vote, format: :trubo_stream) %>
+    <%= link_to "Down vote", question_comment_question_comment_votes_path(question_comment, choice: :down_vote, format: :trubo_stream) %>
+  </div>
+</div>
