@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_210700) do
+ActiveRecord::Schema.define(version: 2022_01_11_075546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,16 @@ ActiveRecord::Schema.define(version: 2022_01_10_210700) do
     t.index ["user_id"], name: "index_course_affiliations_on_user_id"
   end
 
+  create_table "course_items", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.string "name"
+    t.string "category"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_course_items_on_course_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.bigint "channel_id", null: false
     t.string "title"
@@ -320,6 +330,7 @@ ActiveRecord::Schema.define(version: 2022_01_10_210700) do
   add_foreign_key "community_comments", "users"
   add_foreign_key "course_affiliations", "courses"
   add_foreign_key "course_affiliations", "users"
+  add_foreign_key "course_items", "courses"
   add_foreign_key "courses", "channels"
   add_foreign_key "lesson_comments", "lessons"
   add_foreign_key "lesson_comments", "users"

@@ -9,3 +9,5 @@ pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
 pin "direct_uploads", to:"direct_uploads.js", preload: true
 pin "tailwindcss-stimulus-components", to: "https://ga.jspm.io/npm:tailwindcss-stimulus-components@3.0.1/dist/tailwindcss-stimulus-components.modern.js"
+pin "sortablejs", to: "https://ga.jspm.io/npm:sortablejs@1.14.0/modular/sortable.esm.js"
+pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.6/src/index.js"

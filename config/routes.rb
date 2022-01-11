@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resource :course_items, only: :update
   resources :question_comments do
     resource :question_comment_votes, only: :show
   end
