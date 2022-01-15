@@ -5,12 +5,21 @@ class AccountsController < ApplicationController
     @account = Account.new
   end
 
+  def edit
+    @account = Account.friendly.find(params[:id])
+  end
+
   def create
     @account = Account.new(account_params)
-    @account.affiliations.new(user: current_user, role: "admin")
 
     respond_to do |format|
       if @account.save
+        affiliation = AccountAffiliation.new
+        affiliation.user_id = current_user.id
+        affiliation.account_id = @account.id
+        affiliation.role = "admin"
+        affiliation.save
+
         format.html { redirect_to @account, notice: "Account was successfully created." }
         format.json { render :show, status: :created, location: @account }
       else
@@ -21,6 +30,10 @@ class AccountsController < ApplicationController
   end
 
   def select
+    @accounts = current_user.accounts
+  end
+
+  def manage
     @accounts = current_user.accounts
   end
 

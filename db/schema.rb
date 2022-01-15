@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_075546) do
+ActiveRecord::Schema.define(version: 2022_01_15_084049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_075546) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.string "publicid"
+    t.string "library_privacy", default: "private"
     t.index ["account_id"], name: "index_channels_on_account_id"
     t.index ["slug"], name: "index_channels_on_slug", unique: true
   end
@@ -224,6 +225,23 @@ ActiveRecord::Schema.define(version: 2022_01_11_075546) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_lessons_on_course_id"
+  end
+
+  create_table "library_folders", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_library_folders_on_channel_id"
+  end
+
+  create_table "library_items", force: :cascade do |t|
+    t.bigint "library_folder_id", null: false
+    t.string "category"
+    t.integer "itemid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["library_folder_id"], name: "index_library_items_on_library_folder_id"
   end
 
   create_table "question_comment_votes", force: :cascade do |t|
@@ -335,6 +353,8 @@ ActiveRecord::Schema.define(version: 2022_01_11_075546) do
   add_foreign_key "lesson_comments", "lessons"
   add_foreign_key "lesson_comments", "users"
   add_foreign_key "lessons", "courses"
+  add_foreign_key "library_folders", "channels"
+  add_foreign_key "library_items", "library_folders"
   add_foreign_key "question_comment_votes", "question_comments"
   add_foreign_key "question_comment_votes", "users"
   add_foreign_key "question_comments", "questions"

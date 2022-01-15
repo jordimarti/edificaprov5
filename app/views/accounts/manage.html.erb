@@ -1,0 +1,79 @@
+<%= render ("layouts/only_top_bar") %>
+
+<div class="bg-gray-50">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16">
+        <%= t('.manage_accounts') %>
+      </h2>
+      
+      <% @accounts.each do |account| %>
+        <div class="my-24">
+          <%= link_to edit_account_path(account) do %>
+            <div class="w-full flex">
+              <div class="flex-shrink-0 flex items-center justify-center w-16 bg-gray-700 text-white text-sm font-medium rounded-l-md">
+                JM
+              </div>
+              <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate hover:bg-gray-100">
+                <div class="flex-1 px-4 py-2 text-sm truncate">
+                  <p class="text-gray-900 font-medium text-lg hover:text-gray-600">
+                    <%= account.name %>
+                  </p>
+                  <p class="text-gray-500">Account with 12 Members</p>
+                </div>
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="w-full flex">
+            <div class="flex-shrink-0 flex w-16">
+            </div>
+            <div class="flex-1 flex">
+              <div class="flex-1 py-2 truncate">
+                <span class="text-gray-600 font-medium text-xs hover:text-gray-600">
+                  <%= t('.account_channels') %>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <% account.channels.each do |channel| %>
+            <%= link_to edit_channel_path(channel) do %>
+              <div class="w-full flex mb-4">
+                <div class="flex-shrink-0 flex w-16">
+                </div>
+                <div class="flex-shrink-0 flex items-center justify-center w-16 bg-blue-600 text-white text-sm font-medium rounded-l">
+                  JM
+                </div>
+                <div class="flex-1 flex items-center justify-between border border-gray-200 bg-white truncate rounded-r hover:bg-gray-100">
+                  <div class="flex-1 px-4 py-2 text-sm truncate">
+                    <p class="text-gray-900 font-medium text-lg hover:text-gray-600"><%= channel.name %>
+                    <p class="text-gray-500">Channel with 643 subscribers</p>
+                  </div>
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+          <button type="button" class="ml-16 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <%= link_to t('.new_channel'), new_channel_path(account_id: account.id) %>
+          </button>
+          
+        </div>
+      <% end %>
+
+      <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <%= link_to t('.new_account'), new_account_path %>
+      </button>   
+    </div>
+  </div>
+</div>

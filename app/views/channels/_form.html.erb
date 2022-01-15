@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :account_id %>
-    <%= form.text_field :account_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= form.hidden_field :account_id, value: params[:account_id] %>
+  <%= form.hidden_field :publicid, value: SecureRandom.base58(10) %>
 
   <div class="my-5">
     <%= form.label :name %>
@@ -23,20 +21,10 @@
 
   <div class="my-5">
     <%= form.label :privacy %>
-    <%= form.text_field :privacy, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :subscribers %>
-    <%= form.number_field :subscribers, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :main_community %>
-    <%= form.text_field :main_community, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :privacy, [[t('.public'), 'public'], [t('.private'), 'private']], {}, {class: "mt-1 w-1/2 block border border-gray-200 rounded-md shadow-sm py-2 px-3 focus:outline-none sm:text-sm"} %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit t('.create_channel'), class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

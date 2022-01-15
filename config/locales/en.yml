@@ -1,33 +1,68 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      account:
+        name: "Account name"
+      channel:
+        name: "Channel name"
+        privacy: "Privacy"
+  layouts:
+    desktop_navigation:
+      home: "Home"
+      videos: "Videos"
+      articles: "Articles"
+      courses: "Courses"
+      directs: "Directs"
+      communities: "Communities"
+      library: "Library"
+      subscriptions: "Subscriptions"
+    top_bar:
+      login: "Login"
+      sign_out: "Sign out"
+      change_account: "Change account"
+      new_video: "New video"
+      new_article: "New article"
+      new_course: "New course"
+      new_community: "New community"
+    dashboard:
+      dashboard: "Dashboard"
+      home: "Home"
+      videos: "Videos"
+      articles: "Articles"
+      courses: "Courses"
+      communities: "Communities"
+      billing: "Billing"
+      channel: "Channel"
+    user_menu:
+      manage_accounts: "Manage accounts"
+      sign_out: "Sign out"
+      user: "USER"
+      channel: "CHANNEL"
+  home:
+    top_bar:
+      login: "Log in"
+      profile: "Account configuration"
+      sign_out: "Sign out"
+  dashboard:
+    videos:
+      videos_title: "Videos"
+      upload_first_video: "Upload your first video"
+  accounts:
+    manage:
+      manage_accounts: "Account management"
+      new_channel: "+ New channel"
+      new_account: "+ New account"
+      account_channels: "ACCOUNT CHANNELS"
+    select:
+      select_account: "Select the channel you want to use"
+    new:
+      new_account: "New account"
+    form:
+      save: "Save"
+  channels:
+    new:
+      new_channel: "New channel"
+    form:
+      create_channel: "Create channel"
+      private: "Private channel"
+      public: "Public channel"

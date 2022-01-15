@@ -7,16 +7,16 @@
     </div>
     <div data-dropdown-target="menu" class="absolute right-0 mt-2 hidden">
       <div class="bg-white shadow rounded border overflow-hidden w-64">
-        <div class="color-gray-500 px-8 pt-3"><span class="text-gray-400 text-xs">USUARI</span></div>
+        <div class="color-gray-500 px-8 pt-3"><span class="text-gray-400 text-xs"><%= t('.user') %></span></div>
         <div class="px-8 py-1 hover:bg-gray-300">
           <%= link_to current_user.email,  edit_user_registration_path, data: {action: "click->dropdown#toggle"} %>
         </div>
-        <div class="color-gray-500 px-8 pt-3"><span class="text-gray-400 text-xs">CANAL</span></div>
+        <div class="color-gray-500 px-8 pt-3"><span class="text-gray-400 text-xs"><%= t('.channel') %></span></div>
         <div class="px-8 py-1 mb-2 hover:bg-gray-300">
           <%= link_to current_channel.name, current_channel %>
         </div>
         <div class="border-t px-8 py-3 hover:bg-gray-300">
-          <%= link_to t('.change_account'), accounts_select_path %>
+          <%= link_to t('.manage_accounts'), accounts_manage_path %>
         </div>
         <%= link_to t('.sign_out'), destroy_user_session_path, 'data-turbo-method': :delete, data: {action: "click->dropdown#toggle"}, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
       </div>

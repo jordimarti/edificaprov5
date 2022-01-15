@@ -1,0 +1,115 @@
+ca:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "no coincideix amb la contrasenya"
+            current_password:
+              blank: "no pot estar en blanc"
+              invalid: "no és vàlida"
+            password:
+              too_short: "ha de tenir com a mínim 8 caràcters"
+              blank: "no pot estar en blanc"
+            email:
+              taken: "ja està registrat"
+              invalid: "adreça no vàlida"
+              blank: "obligatori"
+            first_name:
+              blank: "obligatori"
+            last_name:
+              blank: "obligatori"
+            nif:
+              blank: "obligatori"
+    attributes:
+      user:
+        first_name: 'Nom'
+        last_name: 'Cognoms'
+        email: 'Correu electrònic'
+        password: 'Contrasenya'
+        password_confirmation: 'Confirmació de contrasenya'
+        current_password: 'Contrasenya actual'
+        remember_me: "Recorda'm"
+        role: "Tipus d'usuari"
+      account:
+        name: "Nom del compte"
+      channel:
+        name: "Nom del canal"
+        privacy: "Privacitat"
+  devise:
+    registrations:
+      new:
+        crear_nou_compte: "Crear un nou compte"
+        crear_compte: "Crea compte"
+        si_compte: "Si ja tens un compte pots"
+        iniciar_sessio: "iniciar sessió"
+    sessions:
+      new:
+        iniciar_sessio: "Iniciar sessió"
+        recorda: "Recorda'm"
+        contrasenya_oblidada: "Has oblidat la contrasenya?"
+        crear_compte: "Crear un compte nou"
+  layouts:
+    desktop_navigation:
+      home: "Inici"
+      videos: "Vídeos"
+      articles: "Articles"
+      courses: "Cursos"
+      directs: "Directes"
+      communities: "Comunitats"
+      library: "Biblioteca"
+      subscriptions: "Subscripcions"
+    top_bar:
+      login: "Iniciar sessió"
+      sign_out: "Tancar sessió"
+      change_account: "Canviar de compte"
+      new_video: "Nou vídeo"
+      new_article: "Nou article"
+      new_course: "Nou curs"
+      new_community: "Nova comunitat"
+    dashboard:
+      dashboard: "Panell de control"
+      home: "Inici"
+      videos: "Vídeos"
+      articles: "Articles"
+      courses: "Cursos"
+      communities: "Comunitats"
+      billing: "Facturació"
+      channel: "Canal"
+    user_menu:
+      manage_accounts: "Gestionar els comptes"
+      sign_out: "Tancar sessió"
+      user: "USUARI"
+      channel: "CANAL"
+  home:
+    top_bar:
+      login: "Iniciar sessió"
+      profile: "Configuració del compte"
+      sign_out: "Tancar la sessió"
+  dashboard:
+    videos:
+      videos_title: "Vídeos"
+      upload_first_video: "Puja el teu primer vídeo"
+  accounts:
+    manage:
+      manage_accounts: "Gestió dels comptes"
+      new_channel: "+ Nou canal"
+      new_account: "+ Nou compte"
+      account_channels: "CANALS DEL COMPTE"
+    select:
+      select_account: "Selecciona el canal que vols utilitzar"
+    new:
+      new_account: "Nou compte"
+    form:
+      save: "Guardar"
+  channels:
+    new:
+      new_channel: "Nou canal"
+    form:
+      create_channel: "Crear canal"
+      private: "Canal privat"
+      public: "Canal públic"
+
+
+      

@@ -1,0 +1,22 @@
+<div id="<%= dom_id library_item %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Library folder:</strong>
+    <%= library_item.library_folder_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Category:</strong>
+    <%= library_item.category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Itemid:</strong>
+    <%= library_item.itemid %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this library item", library_item, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this library item', edit_library_item_path(library_item), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

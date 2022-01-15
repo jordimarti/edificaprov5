@@ -5,4 +5,5 @@ class Account < ApplicationRecord
   has_many :account_affiliations
   has_many :users, through: :account_affiliations
   has_many :channels
+
 end

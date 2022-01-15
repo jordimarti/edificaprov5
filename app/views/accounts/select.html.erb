@@ -1,10 +1,47 @@
-<% @accounts.each do |account| %>
-  <div class="border-b border-gray-300">
-    <%= account.name %>
-    <% account.channels.each do |channel| %>
-      <div class="pl-4 border-b">
-        <%= link_to channel.name, accounts_switch_path(channel_id: channel.id) %>
-      </div>
-    <% end %>
+<%= render ("layouts/only_top_bar") %>
+
+<div class="bg-gray-50">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16">
+        <%= t('.select_account') %>
+      </h2>
+      
+      <% @accounts.each do |account| %>
+        <div class="my-24">
+          <div class="w-full flex">
+            <div class="flex-1 flex items-center justify-between border-b border-gray-500 truncate mb-8">
+              <div class="flex-1 py-2 text-sm truncate">
+                <p class="text-gray-900 font-medium text-xl hover:text-gray-600">
+                  <%= account.name %>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          
+          <% account.channels.each do |channel| %>
+            <%= link_to accounts_switch_path(channel_id: channel.id) do %>
+              <div class="w-full flex mb-4">
+                <div class="flex-shrink-0 flex items-center justify-center w-16 bg-blue-600 text-white text-sm font-medium rounded-l">
+                  JM
+                </div>
+                <div class="flex-1 flex items-center justify-between border border-gray-200 bg-white truncate rounded-r hover:bg-gray-100">
+                  <div class="flex-1 px-4 py-2 text-sm truncate">
+                    <p class="text-gray-900 font-medium text-lg hover:text-gray-600"><%= channel.name %>
+                    <p class="text-gray-500">Channel with 643 subscribers</p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+          
+          
+        </div>
+      <% end %>
+
+     
+    </div>
   </div>
-<% end %>
+</div>

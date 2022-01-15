@@ -9,6 +9,7 @@ class Channel < ApplicationRecord
   has_many :articles
   has_many :courses
   has_many :communities
+  has_many :library_folders
 
   validates :name, presence: true
 end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'channel/:channel_id/library', to: 'channels#library', as: :library
+  resources :library_items
+  resources :library_folders
   resources :course_items
   resources :question_comments do
     resource :question_comment_votes, only: :show
@@ -26,6 +29,7 @@ Rails.application.routes.draw do
   resources :webhooks, only: [:create]
   get 'accounts/switch'
   get 'accounts/select'
+  get 'accounts/manage'
   resources :articles
   resources :videos
   resources :channels

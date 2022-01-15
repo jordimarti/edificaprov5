@@ -1,0 +1,132 @@
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "no coincide con la contraseña"
+            current_password:
+              blank: "no puede estar en blanco"
+              invalid: "no es válida"
+            password:
+              too_short: "debe tener como mínimo 8 carácteres"
+              blank: "no puede estar en blanco"
+            email:
+              taken: "ya está registrado"
+              invalid: "no es válida"
+              blank: "obligatorio"
+            first_name:
+              blank: "obligatorio"
+            last_name:
+              blank: "obligatorio"
+            nif:
+              blank: "obligatorio"
+    attributes:
+      user:
+        first_name: 'Nombre'
+        last_name: 'Apellidos'
+        email: 'Correo electrónico'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de contraseña'
+        current_password: 'Contraseña actual'
+        remember_me: "Recuérdame"
+        role: "Tipología de usuario"
+      account:
+        name: "Nombre de la cuenta"
+      channel:
+        name: "Nombre del canal"
+        privacy: "Privacidad"
+  devise:
+    registrations:
+      new:
+        crear_nou_compte: "Crear una nueva cuenta"
+        crear_compte: "Crear cuenta"
+        si_compte: "Si ya tienes cuenta puedes"
+        iniciar_sessio: "iniciar sesión"
+    sessions:
+      new:
+        iniciar_sessio: "Iniciar sesión"
+        recorda: "Recuérdame"
+        contrasenya_oblidada: "¿Has olvidado la contraseña?"
+        crear_compte: "Crear una cuenta nueva"
+  layouts:
+    desktop_navigation:
+      home: "Inicio"
+      videos: "Vídeos"
+      articles: "Artículos"
+      courses: "Cursos"
+      directs: "Directos"
+      communities: "Comunidades"
+      library: "Biblioteca"
+      subscriptions: "Suscripciones"
+    top_bar:
+      login: "Iniciar sesión"
+      sign_out: "Cerrar sesión"
+      change_account: "Cambiar de cuenta"
+      new_video: "Nuevo vídeo"
+      new_article: "Nuevo artículo"
+      new_course: "Nuevo curso"
+      new_community: "Nueva comunidad"
+    dashboard:
+      dashboard: "Panel de control"
+      home: "Inicio"
+      videos: "Vídeos"
+      articles: "Artículos"
+      courses: "Cursos"
+      communities: "Comunidades"
+      billing: "Facturación"
+      channel: "Canal"
+    user_menu:
+      manage_accounts: "Gestionar las cuentas"
+      sign_out: "Cerrar sesión"
+      user: "USUARIO"
+      channel: "CANAL"
+  home:
+    top_bar:
+      login: "Iniciar sesión"
+      profile: "Configuración de la cuenta"
+      sign_out: "Cerrar la sesión"
+  dashboard:
+    videos:
+      videos_title: "Vídeos"
+      upload_first_video: "Sube tu primer vídeo"
+  accounts:
+    manage:
+      manage_accounts: "Gestión de las cuentas"
+      new_channel: "+ Nuevo canal"
+      new_account: "+ Nueva cuenta"
+      account_channels: "CANALES DE LA CUENTA"  
+    select:
+      select_account: "Selecciona el canal que quieres utilizar"
+    new:
+      new_account: "Nueva cuenta"
+    form:
+      save: "Guardar"
+  channels:
+    new:
+      new_channel: "Nuevo canal"
+    form:
+      create_channel: "Crear canal"
+      private: "Canal privado"
+      public: "Canal público"
+  time:
+    am: "am"
+    pm: "pm"
+    singular: "a {time}"
+    singularAn: "an {time}"
+    elapsed: "{time} ago"
+    second: "second"
+    seconds: "seconds"
+    minute: "minute"
+    minutes: "minutes"
+    hour: "hour"
+    hours: "hours"
+    formats:
+      default: "%l:%M%P"
+      long: "%l:%M%P"
+  datetime:
+    at: "{date} at {time}"
+    formats:
+      default: "%B %e, %Y at %l:%M%P %Z"
+      long: "%B %e, %Y at %l:%M%P %Z"

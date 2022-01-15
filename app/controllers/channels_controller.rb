@@ -22,7 +22,7 @@ class ChannelsController < ApplicationController
   # POST /channels or /channels.json
   def create
     @channel = Channel.new(channel_params)
-
+    
     respond_to do |format|
       if @channel.save
         format.html { redirect_to channel_url(@channel), notice: "Channel was successfully created." }
@@ -57,6 +57,10 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def library
+    @menu_library = true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
@@ -65,6 +69,6 @@ class ChannelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def channel_params
-      params.require(:channel).permit(:account_id, :name, :privacy, :subscribers, :main_community)
+      params.require(:channel).permit(:account_id, :name, :privacy, :subscribers, :main_community, :library_privacy)
     end
 end
