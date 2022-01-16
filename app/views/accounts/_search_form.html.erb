@@ -1,6 +1,6 @@
 <div data-controller="debounce"></div>
 <%= form_with url: search_accounts_path, method: :post, data: {controller: "debounce", debounce_target: "form"} do |form| %>
-  <div class="max-w-lg flex rounded-md shadow-sm">
+  <div class="max-w-sm flex rounded-md shadow-sm">
     <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
       @
     </span>
@@ -9,6 +9,6 @@
   </div>
 <% end %>
 
-<div id="search_results">
+<div id="search_results" class="max-w-sm">
   
 </div>

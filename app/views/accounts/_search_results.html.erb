@@ -1,5 +1,5 @@
 <% @accounts.each do |account| %>
-  <div class="mt-1 bg-blue-100 px-4 py-2">
+  <div class="mt-1 bg-white px-4 py-2 border rounded border-gray-300">
     <%= turbo_frame_tag dom_id(account) do %>
       <%= link_to accounts_user_info_path(account_id: account.id, destination_account: destination_account) do %>
         @<%= highlight(account.username, params[:username_search]) %>
