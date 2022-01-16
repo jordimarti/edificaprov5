@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def create_user_account
-    account = Account.create! name: self.name
+    account = Account.create! name: self.name, category: "user"
     create_affiliation(account.id, self.id)
   end
 

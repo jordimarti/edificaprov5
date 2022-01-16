@@ -103,6 +103,9 @@ es:
       new_account: "Nueva cuenta"
     form:
       save: "Guardar"
+    edit:
+      edit_account: "Configuración de la cuenta"
+      account_members: "Añade usuarios a esta cuenta"
   channels:
     new:
       new_channel: "Nuevo canal"

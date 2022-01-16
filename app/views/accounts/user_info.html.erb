@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(@account) do %>
+  <div class="">
+    @<%= @account.username%>
+    <%= @user_info.first_name %> <%= @user_info.last_name %>
+    <%= link_to "Añadir", accounts_new_affiliation_path(user_id: @user_info.id, id: @account.id, destination_account: @destination_account) %>
+  </div>
+<% end %>

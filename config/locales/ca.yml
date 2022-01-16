@@ -103,6 +103,9 @@ ca:
       new_account: "Nou compte"
     form:
       save: "Guardar"
+    edit:
+      edit_account: "Configuració del compte"
+      account_members: "Afegeix usuaris a aquest compte"
   channels:
     new:
       new_channel: "Nou canal"

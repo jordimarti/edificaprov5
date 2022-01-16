@@ -59,6 +59,9 @@ en:
       new_account: "New account"
     form:
       save: "Save"
+    edit:
+      edit_account: "Account configuration"
+      account_members: "Add users to this account"
   channels:
     new:
       new_channel: "New channel"

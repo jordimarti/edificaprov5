@@ -37,6 +37,37 @@ class AccountsController < ApplicationController
     @accounts = current_user.accounts
   end
 
+  def search
+    if params[:username_search].present?
+      @accounts = Account.where("username ILIKE ? AND category = 'user'", "%#{params[:username_search]}%")
+    else
+      @accounts = []
+    end
+    puts "----search----"
+    puts params[:destination_account]
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("search_results", partial: "accounts/search_results", locals: { accounts: @accounts, destination_account: params[:destination_account] })
+      end
+    end
+  end
+
+  def user_info
+    affiliate = AccountAffiliation.find_by(account_id: params[:account_id])
+    @user_info = User.find(affiliate.user_id)
+    @account = Account.find(params[:account_id])
+    @destination_account = params[:destination_account]
+    puts "----destination account---------"
+    puts @destination_account
+    
+  end
+
+  def new_affiliation
+    affiliation = AccountAffiliation.new(user_id: params[:user_id], account_id: params[:destination_account], role: "editor")
+    affiliation.save
+    @account = Account.find(params[:id])
+  end
+
   def switch
     if(params.has_key?(:channel_id))
       @channel = Channel.find(params[:channel_id])
@@ -56,7 +87,7 @@ class AccountsController < ApplicationController
   private
 
     def account_params
-      params.require(:account).permit(:name)
+      params.require(:account).permit(:name, :username, :category, :username_search, :destination_account)
     end
 
 end

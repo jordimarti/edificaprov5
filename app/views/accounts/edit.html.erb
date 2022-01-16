@@ -1,3 +1,4 @@
+<%= render ("layouts/mobile_navigation") %>
 <%= render ("layouts/only_top_bar") %>
 
 <div class="bg-gray-50">
@@ -8,8 +9,12 @@
       </h2>
       <%= render "form", account: @account %>
 
-      <%= t('.account_members') %>:
-
+      <div class="mt-16">
+        <%= t('.account_members') %>:
+      </div>
+      <div>
+        <%= render "search_form", destination_account: @account.id %>
+      </div>
     </div>
   </div>
 </div>

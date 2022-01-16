@@ -27,13 +27,19 @@ Rails.application.routes.draw do
   resources :communities
   resources :courses
   resources :webhooks, only: [:create]
-  get 'accounts/switch'
-  get 'accounts/select'
-  get 'accounts/manage'
   resources :articles
   resources :videos
   resources :channels
-  resources :accounts
+  get 'accounts/switch'
+  get 'accounts/select'
+  get 'accounts/manage'
+  get 'accounts/user_info'
+  get 'accounts/new_affiliation'
+  resources :accounts do
+    collection do
+      post :search
+    end
+  end
   devise_for :users
   get 'home/index'
   root to: "home#index"
