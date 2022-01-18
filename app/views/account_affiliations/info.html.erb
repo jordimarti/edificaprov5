@@ -1,0 +1,31 @@
+<% 
+user = User.find(@account_affiliation.user_id) 
+personal_account_affiliation = AccountAffiliation.find_by(user_id: user.id, role: "user")
+personal_account = Account.find(personal_account_affiliation.account_id)
+#account = Account.find(@account_affiliation.account_id)
+%>
+
+<%= turbo_frame_tag dom_id(@account_affiliation) do %>
+  <div class="flex items-center space-x-3 px-4 py-3 hover:bg-gray-100">
+    <div>
+      <div class="flex-shrink-0">
+        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      </div>
+    </div>
+    <div>
+      <div>
+        <span class="text-base font-bold mr-4"><%= user.first_name %> <%= user.last_name %></span>
+      </div>
+      <div class="flex text-gray-600 text-sm">
+        <div>@<%= personal_account.username %></div> 
+        <% if @account_affiliation.role == "admin" %>
+          <div class="bg-gray-400 rounded px-2 text-white ml-2">admin</div>
+        <% end %>
+      </div>
+    </div>
+    <div class="inline-block ml-2">
+      <%= button_to t('.eliminate'), account_affiliation_path(@account_affiliation), method: :delete, class: "mt-2 rounded-lg py-1 px-2 bg-red-500 text-white text-sm" %>
+    </div>
+  </div>
+  
+<% end %>

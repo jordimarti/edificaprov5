@@ -29,6 +29,17 @@ class AccountsController < ApplicationController
     end
   end
 
+  def update
+    @account = Account.friendly.find(params[:id])
+    respond_to do |format|
+      if @account.update(account_params)
+        format.html { render :edit }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def select
     @accounts = current_user.accounts
   end
@@ -59,12 +70,18 @@ class AccountsController < ApplicationController
     @destination_account = params[:destination_account]
     puts "----destination account---------"
     puts @destination_account
-    
+    @account_affiliation = AccountAffiliation.new
   end
 
   def new_affiliation
-    affiliation = AccountAffiliation.new(user_id: params[:user_id], account_id: params[:destination_account], role: "editor")
-    affiliation.save
+    current_affiliation = AccountAffiliation.where(user_id: params[:user_id], account_id: params[:destination_account])
+    if current_affiliation.count > 0
+      @response = false
+    else
+      affiliation = AccountAffiliation.new(user_id: params[:user_id], account_id: params[:destination_account], role: "editor")
+      affiliation.save
+      @response = true
+    end
     @account = Account.find(params[:id])
   end
 
@@ -84,8 +101,11 @@ class AccountsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+  def configuration
+    @account = Account.friendly.find(params[:id])
+  end
 
+  private
     def account_params
       params.require(:account).permit(:name, :username, :category, :username_search, :destination_account)
     end

@@ -30,11 +30,17 @@ Rails.application.routes.draw do
   resources :articles
   resources :videos
   resources :channels
+  get 'account_affiliations/info'
+  get 'account_affiliations/become_admin'
+  resources :account_affiliations
   get 'accounts/switch'
   get 'accounts/select'
   get 'accounts/manage'
   get 'accounts/user_info'
   get 'accounts/new_affiliation'
+  get 'accounts/members'
+  get 'accounts/confirmed'
+  get 'accounts/:id/configuration', to: 'accounts#configuration', as: :account_configuration
   resources :accounts do
     collection do
       post :search

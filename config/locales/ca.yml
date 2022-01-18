@@ -106,6 +106,10 @@ ca:
     edit:
       edit_account: "Configuració del compte"
       account_members: "Afegeix usuaris a aquest compte"
+      current_account_users: "Usuaris actuals del compte"
+    new_affiliation:
+      user_added: "Usuari afegit"
+      already_belongs: "ja pertany a aquest compte"
   channels:
     new:
       new_channel: "Nou canal"

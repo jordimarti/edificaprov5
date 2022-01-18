@@ -62,6 +62,10 @@ en:
     edit:
       edit_account: "Account configuration"
       account_members: "Add users to this account"
+      current_account_users: "Current account members"
+    new_affiliation:
+      user_added: "User added"
+      already_belongs: "already belongs to this account"
   channels:
     new:
       new_channel: "New channel"

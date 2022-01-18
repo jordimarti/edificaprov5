@@ -106,6 +106,10 @@ es:
     edit:
       edit_account: "Configuración de la cuenta"
       account_members: "Añade usuarios a esta cuenta"
+      current_account_users: "Usuarios actuales de la cuenta"
+    new_affiliation:
+      user_added: "Usuario añadido"
+      already_belongs: "ya pertenece a esta cuenta"
   channels:
     new:
       new_channel: "Nuevo canal"

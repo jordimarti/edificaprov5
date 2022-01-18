@@ -1,3 +1,7 @@
 <%= turbo_frame_tag dom_id(@account) do %>
-  <%= t('.user_added') %>
+  <% if @response == true %>
+    <%= t('.user_added') %>
+  <% else %>
+    @<%= @account.username %> <%= t('.already_belongs') %>
+  <% end %>
 <% end %>
