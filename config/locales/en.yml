@@ -59,8 +59,10 @@ en:
       new_account: "New account"
     form:
       save: "Save"
-    edit:
-      edit_account: "Account configuration"
+    configuration:
+      account_configuration: "Account configuration"
+      account_name: "Account name"
+      change_name: "Edit account name"
       account_members: "Add users to this account"
       current_account_users: "Current account members"
     new_affiliation:

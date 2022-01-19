@@ -7,31 +7,9 @@
       <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16">
         <%= t('.edit_account') %>
       </h2>
-      <%= render "form", account: @account %>
-
-      
-      <%= turbo_stream_from :account_affiliations %>
-
-      <div class="grid grid-cols-2 gap-4 mt-16">
-        <div>
-          <div>
-            <%= t('.account_members') %>:
-          </div>
-          <div>
-            <%= render "search_form", destination_account: @account.id %>
-          </div>
-        </div>
-        <div>
-          <div>
-            <%= t('.current_account_users') %>
-          </div>
-          <div>
-            <div class="bg-white border border-gray-300 rounded divide-y">
-              <%= turbo_frame_tag "account_affiliations", src: account_affiliations_path(account_id: @account.id) %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= turbo_frame_tag "edit_account" do %>
+        <%= render "form", account: @account %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -22,6 +22,10 @@ es:
               blank: "obligatorio"
             nif:
               blank: "obligatorio"
+        account:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
     attributes:
       user:
         first_name: 'Nombre'
@@ -103,8 +107,10 @@ es:
       new_account: "Nueva cuenta"
     form:
       save: "Guardar"
-    edit:
-      edit_account: "Configuración de la cuenta"
+    configuration:
+      account_configuration: "Configuración de la cuenta"
+      account_name: "Nombre de la cuenta"
+      change_name: "Editar el nombre de la cuenta"
       account_members: "Añade usuarios a esta cuenta"
       current_account_users: "Usuarios actuales de la cuenta"
     new_affiliation:

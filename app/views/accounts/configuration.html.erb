@@ -7,14 +7,19 @@
       <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-16">
         <%= t('.account_configuration') %>
       </h2>
-      <%= @account.name %>
-
+      
+      <%= turbo_frame_tag "edit_account" do %>
+        <div class="text-2xl font-bold">
+          <%= render @account %>
+        </div>
+        <p class="text-sm text-blue-600"><%= link_to t('.change_name'), edit_account_path(@account) %></p>
+      <% end %>
       
       <%= turbo_stream_from :account_affiliations %>
 
       <div class="grid grid-cols-2 gap-4 mt-16">
         <div>
-          <div>
+          <div class="mb-1">
             <%= t('.account_members') %>:
           </div>
           <div>
@@ -22,11 +27,11 @@
           </div>
         </div>
         <div>
-          <div>
-            <%= t('.current_account_users') %>
+          <div class="mb-1">
+            <%= t('.current_account_users') %>:
           </div>
           <div>
-            <div class="bg-white border border-gray-300 rounded divide-y">
+            <div class="bg-white border border-gray-300 rounded">
               <%= turbo_frame_tag "account_affiliations", src: account_affiliations_path(account_id: @account.id) %>
             </div>
           </div>

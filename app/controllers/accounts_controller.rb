@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
     @account = Account.friendly.find(params[:id])
     respond_to do |format|
       if @account.update(account_params)
-        format.html { render :edit }
+        format.html { redirect_to account_configuration_path(@account) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

@@ -6,4 +6,5 @@ class Account < ApplicationRecord
   has_many :users, through: :account_affiliations
   has_many :channels
 
+  validates :name, presence: true
 end
