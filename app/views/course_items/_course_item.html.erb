@@ -1,6 +1,13 @@
 <% if course_item.category == "lesson" %>
   <%= content_tag :div, id: dom_id(course_item), data: { sgid: course_item.to_sgid_param }, class: "bg-gray-100 px-4 py-1 my-1 border" do %>
-    <%= course_item.name %> <span class="text-sm text-gray-600">- lesson</span>
+    <div class="relative flex">
+      <div> 
+        <%= course_item.name %> <span class="text-sm text-gray-600">- lesson</span>
+      </div>
+      <div class="absolute right-0 mr-2">
+        <%= link_to t('.edit'), edit_course_item_path(course_item), target: '_top' %>
+      </div>
+    </div>
   <% end %>
 <% elsif course_item.category == "chapter" %>
   <%= content_tag :div, id: dom_id(course_item), data: { sgid: course_item.to_sgid_param }, class: "bg-gray-300 px-2 py-1 my-1 border font-bold" do %>

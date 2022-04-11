@@ -6,9 +6,18 @@ class CourseItemsController < ApplicationController
     @course_items = @course.course_items
   end
 
+  def show
+    @course_item = CourseItem.find(params[:id])
+  end
+
   def new
     @course_item = CourseItem.new
     @course = Course.find(params[:course_id])
+  end
+
+  def edit
+    @course_item = CourseItem.find(params[:id])
+    @course = @course_item.course_id
   end
 
   def create

@@ -143,3 +143,6 @@ es:
     formats:
       default: "%B %e, %Y at %l:%M%P %Z"
       long: "%B %e, %Y at %l:%M%P %Z"
+  videos:
+    form:
+      save_video: "Cargar vídeo"

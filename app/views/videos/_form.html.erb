@@ -18,12 +18,14 @@
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :file %>
-    <%= form.file_field :file, direct_upload: true %>
+  <div data-controller="upload" class="my-5">
+    <%= form.file_field :file, direct_upload: true,
+      data: { upload_target: 'input', action: "change->upload#uploadFile" } %>
+    <div data-upload-target="progress"></div>
   </div>
 
   <div class="inline">
     <%= form.submit t('.save_video'), class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
+
 <% end %>
