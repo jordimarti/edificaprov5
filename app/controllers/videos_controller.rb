@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new edit create update destroy ]
+  before_action :authenticate_user!, only: %i[ list new edit create update destroy ]
 
   # GET /videos or /videos.json
   def index
@@ -11,14 +11,20 @@ class VideosController < ApplicationController
   def show
   end
 
+  def list
+    @menu_videos = true
+    @videos = Video.where(channel_id: current_channel.id)
+  end
+
   # GET /videos/new
   def new
-    @video = Video.new
     @menu_videos = true
+    @video = Video.new
   end
 
   # GET /videos/1/edit
   def edit
+    @menu_videos = true
   end
 
   # POST /videos or /videos.json
@@ -83,6 +89,6 @@ class VideosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:channel_id, :title, :score, :visible, :publicid, :playback_id, :policy, :mux_asset_id, :status, :max_stored_resolution, :max_stored_frame_rate, :duration, :aspect_ratio, :file)
+      params.require(:video).permit(:channel_id, :title, :description, :score, :visible, :publicid, :playback_id, :policy, :mux_asset_id, :status, :max_stored_resolution, :max_stored_frame_rate, :duration, :aspect_ratio, :file)
     end
 end

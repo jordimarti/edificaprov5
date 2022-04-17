@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_220719) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_01_15_220719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,16 +18,16 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "account_id", null: false
     t.string "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_account_affiliations_on_account_id"
     t.index ["user_id"], name: "index_account_affiliations_on_user_id"
   end
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.string "username"
     t.string "category"
@@ -40,8 +39,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -50,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -63,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -77,8 +76,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "article_comment_id", null: false
     t.integer "choice", limit: 2, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_comment_id"], name: "index_article_comment_votes_on_article_comment_id"
     t.index ["user_id"], name: "index_article_comment_votes_on_user_id"
   end
@@ -86,8 +85,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
   create_table "article_comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "article_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_article_comments_on_article_id"
     t.index ["user_id"], name: "index_article_comments_on_user_id"
   end
@@ -96,8 +95,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "channel_id", null: false
     t.string "title"
     t.integer "score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["channel_id"], name: "index_articles_on_channel_id"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
@@ -107,8 +106,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
     t.string "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_channel_affiliations_on_channel_id"
     t.index ["user_id"], name: "index_channel_affiliations_on_user_id"
   end
@@ -119,8 +118,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.string "privacy"
     t.integer "subscribers"
     t.string "main_community"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.string "publicid"
     t.string "library_privacy", default: "private"
@@ -133,8 +132,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.string "name"
     t.string "privacy"
     t.string "publicid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["channel_id"], name: "index_communities_on_channel_id"
     t.index ["slug"], name: "index_communities_on_slug", unique: true
@@ -144,8 +143,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "community_id", null: false
     t.string "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_community_affiliations_on_community_id"
     t.index ["user_id"], name: "index_community_affiliations_on_user_id"
   end
@@ -154,8 +153,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "article_comment_id", null: false
     t.integer "choice", limit: 2, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_comment_id"], name: "index_community_comment_votes_on_article_comment_id"
     t.index ["user_id"], name: "index_community_comment_votes_on_user_id"
   end
@@ -163,8 +162,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
   create_table "community_comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "community_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_community_comments_on_community_id"
     t.index ["user_id"], name: "index_community_comments_on_user_id"
   end
@@ -173,8 +172,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
     t.string "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_affiliations_on_course_id"
     t.index ["user_id"], name: "index_course_affiliations_on_user_id"
   end
@@ -184,8 +183,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.string "name"
     t.string "category"
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_items_on_course_id"
   end
 
@@ -193,8 +192,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "channel_id", null: false
     t.string "title"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["channel_id"], name: "index_courses_on_channel_id"
     t.index ["slug"], name: "index_courses_on_slug", unique: true
@@ -205,7 +204,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
-    t.datetime "created_at", precision: 6
+    t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -214,8 +213,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
   create_table "lesson_comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "lesson_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_lesson_comments_on_lesson_id"
     t.index ["user_id"], name: "index_lesson_comments_on_user_id"
   end
@@ -224,16 +223,16 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "course_id", null: false
     t.string "title"
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 
   create_table "library_folders", force: :cascade do |t|
     t.bigint "channel_id", null: false
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_library_folders_on_channel_id"
   end
 
@@ -241,8 +240,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "library_folder_id", null: false
     t.string "category"
     t.integer "itemid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["library_folder_id"], name: "index_library_items_on_library_folder_id"
   end
 
@@ -250,8 +249,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "question_comment_id", null: false
     t.integer "choice"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["question_comment_id"], name: "index_question_comment_votes_on_question_comment_id"
     t.index ["user_id"], name: "index_question_comment_votes_on_user_id"
   end
@@ -259,8 +258,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
   create_table "question_comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "question_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_question_comments_on_question_id"
     t.index ["user_id"], name: "index_question_comments_on_user_id"
   end
@@ -268,8 +267,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
   create_table "questions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -277,14 +276,14 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.string "first_name"
     t.string "last_name"
     t.string "locale"
     t.string "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -293,8 +292,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.bigint "user_id", null: false
     t.bigint "video_comment_id", null: false
     t.integer "choice", limit: 2, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_video_comment_votes_on_user_id"
     t.index ["video_comment_id"], name: "index_video_comment_votes_on_video_comment_id"
   end
@@ -302,8 +301,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
   create_table "video_comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "video_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_video_comments_on_user_id"
     t.index ["video_id"], name: "index_video_comments_on_video_id"
   end
@@ -322,8 +321,8 @@ ActiveRecord::Schema.define(version: 2022_01_15_220719) do
     t.float "max_stored_frame_rate"
     t.float "duration"
     t.string "aspect_ratio"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["channel_id"], name: "index_videos_on_channel_id"
     t.index ["slug"], name: "index_videos_on_slug", unique: true

@@ -144,5 +144,10 @@ es:
       default: "%B %e, %Y at %l:%M%P %Z"
       long: "%B %e, %Y at %l:%M%P %Z"
   videos:
+    list:
+      title_videos: "Vídeos"
     form:
-      save_video: "Cargar vídeo"
+      save_video: "Guardar vídeo"
+    edit:
+      video_details: "Detalles del vídeo"
+      save_video: "Guardar"

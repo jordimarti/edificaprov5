@@ -123,6 +123,14 @@ ca:
       create_channel: "Crear canal"
       private: "Canal privat"
       public: "Canal públic"
+  videos:
+    list:
+      title_videos: "Vídeos"
+    form:
+      save_video: "Guardar vídeo"
+    edit:
+      video_details: "Detalls del vídeo"
+      save_video: "Guardar"
 
 
       

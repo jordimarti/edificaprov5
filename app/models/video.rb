@@ -6,4 +6,5 @@ class Video < ApplicationRecord
   validates :title, presence: true
   has_one_attached :file
   has_many :video_comments, dependent: :destroy
+  has_rich_text :description
 end

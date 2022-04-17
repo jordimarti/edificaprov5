@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :webhooks, only: [:create]
   resources :articles
+  get 'videos/list'
   resources :videos
   resources :channels
   get 'account_affiliations/info'
