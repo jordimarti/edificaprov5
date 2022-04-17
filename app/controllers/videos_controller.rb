@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy ]
 
   # GET /videos or /videos.json
   def index
@@ -13,6 +14,7 @@ class VideosController < ApplicationController
   # GET /videos/new
   def new
     @video = Video.new
+    @menu_videos = true
   end
 
   # GET /videos/1/edit

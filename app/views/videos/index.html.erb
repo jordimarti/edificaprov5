@@ -1,14 +1,21 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<div class="h-screen flex overflow-hidden bg-white">
+  
+  <%= render ("layouts/mobile_navigation") %>
+  <%= render ("layouts/desktop_navigation") %>
+  
+  <div class="flex flex-col w-0 flex-1 overflow-hidden">
+    <%= render ("layouts/top_bar") %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Videos</h1>
-    <%= link_to 'New video', new_video_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="videos" class="min-w-full">
-    <%= render @videos %>
+    <main class="flex-1 relative overflow-y-auto focus:outline-none" tabindex="-1">
+      <div class="bg-gray-100">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+          <% @videos.each do |video| %>
+            <%= render partial: "thumbnail", locals: {video: video} %>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
