@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import { DirectUpload } from "@rails/activestorage";
 
 export default class extends Controller {
-  static targets = ["input", "progress"];
+  static targets = ["input", "progress", "saveButton"];
 
   uploadFile() {
     Array.from(this.inputTarget.files).forEach((file) => {
@@ -40,9 +40,13 @@ export default class extends Controller {
 
   progressUpdate(event) {
     const progress = (event.loaded / event.total) * 100;
-    const progressbar = '<div class="w-full h-6 mt-2 bg-gray-200 rounded-full"><div class="bg-blue-600 text-xs font-medium text-white text-center p-2 leading-none rounded-full" style="width: ' + progress + '%">' + progress.toFixed(0) + ' %</div></div>';
+    const progressbar = '<div class="w-full h-7 mt-2 bg-gray-200 rounded-full"><div class="bg-blue-600 text-xs font-medium text-white text-center p-2 leading-none rounded-full" style="width: ' + progress + '%">' + progress.toFixed(0) + ' %</div></div>';
     this.progressTarget.innerHTML = progressbar;
-
+    const available = "bg-blue-300";
+    if (progress == 100) {
+      //console.log("Video uploaded");
+      this.saveButtonTarget.classList.remove('hidden');
+    }
     // if you navigate away from the form, progress can still be displayed 
     // with something like this:
     // document.querySelector("#global-progress").innerHTML = progress;

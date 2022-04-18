@@ -10,6 +10,11 @@ class CoursesController < ApplicationController
   def show
   end
 
+  def list
+    @menu_courses = true
+    @courses = Course.where(channel_id: current_channel.id)
+  end
+
   # GET /courses/new
   def new
     @course = Course.new

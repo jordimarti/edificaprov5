@@ -1,0 +1,19 @@
+<%= render ("layouts/dashboard") %>
+  
+  <div class="py-6">
+    <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8">
+      <div class="hidden lg:block lg:col-span-3">
+        <%= render ("layouts/dashboard_menu") %>
+      </div>
+      <main class="lg:col-span-9">
+        <h1 class="font-bold text-2xl mb-4"><%= t('.title_communities') %></h1>
+
+        <% @communities.each do |community| %>
+          <div class="border-b py-4">
+            <%= link_to community.name, edit_community_path(community), class: "hover:text-gray-600" %>
+          </div>
+        <% end %>
+      </main>
+    </div>
+  </div>
+</div>

@@ -19,14 +19,12 @@ Rails.application.routes.draw do
     resource :video_comment_votes, only: :show
   end
   get 'dashboard/index'
-  get 'dashboard/videos'
-  get 'dashboard/articles'
-  get 'dashboard/courses'
-  get 'dashboard/communities'
-  get 'dashboard/billing'
+  get 'communities/list'
   resources :communities
+  get 'courses/list'
   resources :courses
   resources :webhooks, only: [:create]
+  get 'articles/list'
   resources :articles
   get 'videos/list'
   resources :videos

@@ -41,6 +41,8 @@ es:
       channel:
         name: "Nombre del canal"
         privacy: "Privacidad"
+      video:
+        title: "Título"
   devise:
     registrations:
       new:
@@ -86,6 +88,13 @@ es:
       sign_out: "Cerrar sesión"
       user: "USUARIO"
       channel: "CANAL"
+      dashboard: "Panel de control"
+    dashboard_menu:
+      dashboard: "Panel de control"
+      videos: "Vídeos"
+      articles: "Artículos"
+      courses: "Cursos"
+      communities: "Comunidades"
   home:
     top_bar:
       login: "Iniciar sesión"
@@ -146,8 +155,11 @@ es:
   videos:
     list:
       title_videos: "Vídeos"
+      new_video: "Nuevo vídeo"
     form:
       save_video: "Guardar vídeo"
     edit:
       video_details: "Detalles del vídeo"
       save_video: "Guardar"
+    new:
+      new_video: "Nuevo vídeo"

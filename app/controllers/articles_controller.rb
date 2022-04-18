@@ -10,6 +10,11 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def list
+    @menu_articles = true
+    @articles = Article.where(channel_id: current_channel.id)
+  end
+
   # GET /articles/new
   def new
     @article = Article.new

@@ -41,6 +41,8 @@ ca:
       channel:
         name: "Nom del canal"
         privacy: "Privacitat"
+      video:
+        title: "Títol"
   devise:
     registrations:
       new:
@@ -86,6 +88,13 @@ ca:
       sign_out: "Tancar sessió"
       user: "USUARI"
       channel: "CANAL"
+      dashboard: "Panell de control"
+    dashboard_menu:
+      dashboard: "Panell de control"
+      videos: "Vídeos"
+      articles: "Articles"
+      courses: "Cursos"
+      communities: "Comunitats"
   home:
     top_bar:
       login: "Iniciar sessió"
@@ -126,11 +135,14 @@ ca:
   videos:
     list:
       title_videos: "Vídeos"
+      new_video: "Nou vídeo"
     form:
       save_video: "Guardar vídeo"
     edit:
       video_details: "Detalls del vídeo"
       save_video: "Guardar"
+    new:
+      new_video: "Nou vídeo"
 
 
       

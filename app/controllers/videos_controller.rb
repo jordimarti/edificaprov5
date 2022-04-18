@@ -35,7 +35,7 @@ class VideosController < ApplicationController
     respond_to do |format|
       if @video.save
         create_mux_video(@video)
-        format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
+        format.html { redirect_to edit_video_path(@video) }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }

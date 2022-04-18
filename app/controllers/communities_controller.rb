@@ -10,6 +10,11 @@ class CommunitiesController < ApplicationController
   def show
   end
 
+  def list
+    @menu_communities = true
+    @communities = Community.where(channel_id: current_channel.id)
+  end
+
   # GET /communities/new
   def new
     @community = Community.new
