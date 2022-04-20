@@ -141,6 +141,12 @@ ca:
     edit:
       video_details: "Detalls del vídeo"
       save_video: "Guardar"
+      title: "Títol"
+      thumbnail: "Imatge miniatura"
+      description: "Descripció"
+      privacy: "Privacitat"
+      private_video: "Privat"
+      public_video: "Públic"
     new:
       new_video: "Nou vídeo"
 
