@@ -169,3 +169,21 @@ es:
       public_video: "Público"
     new:
       new_video: "Nuevo vídeo"
+  articles:
+    list:
+      title_articles: "Artículos"
+      new_article: "Nuevo artículo"
+    new:
+      new_article: "Nuevo artículo"
+      articles: "Artículos"
+    edit:
+      edit_article: "Editar artículo"
+      articles: "Artículos"
+    form:
+      title: "Título"
+      save_article: "Guardar artículo"
+      article: "Artículo"
+      privacy: "Privacidad"
+      private: "Privado"
+      only_courses: "Sólo en cursos"
+      public: "Público"

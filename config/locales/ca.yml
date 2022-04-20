@@ -149,6 +149,25 @@ ca:
       public_video: "Públic"
     new:
       new_video: "Nou vídeo"
+  articles:
+    list:
+      title_articles: "Articles"
+      new_article: "Nou article"
+    new:
+      new_article: "Nou article"
+      articles: "Articles"
+    edit:
+      edit_article: "Editar article"
+      articles: "Articles"
+    form:
+      title: "Títol"
+      save_article: "Guardar article"
+      article: "Article"
+      privacy: "Privacitat"
+      private: "Privat"
+      only_courses: "Només als cursos"
+      public: "Públic"
+
 
 
       

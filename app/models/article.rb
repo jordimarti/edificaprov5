@@ -6,4 +6,5 @@ class Article < ApplicationRecord
   belongs_to :channel
 
   validates :title, presence: true
+  has_one_attached :thumbnail
 end

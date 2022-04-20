@@ -1,27 +1,81 @@
-<%= form_with(model: article, class: "contents") do |form| %>
-  <% if article.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<main class="py-6 bg-gray-100 h-screen">
+  <%= form_with(model: article, class: "contents") do |form| %>
+  
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+      <div class="flex items-center space-x-5">
+        <div>
+          <h1 class="font-bold text-2xl"><%= t('.article') %></h1>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
+        <%= form.submit t('.save_article'), class: "inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 cursor-pointer" %>
+      </div>
+    </div>
+  
+    <% if article.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% article.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mt-6 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+      <div class="space-y-6 lg:col-start-1 lg:col-span-2">
+        <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden px-4 py-5 sm:px-6">
+          <div class="my-5">
+            <span class="font-bold"><%= t('.title') %></span>
+            <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          </div>
+          <div class="field article-field mb-8">
+            <%= form.rich_text_area :content %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="space-y-6 lg:col-start-3 lg:col-span-1">
+        <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
+          <div class="font-bold mb-1"><%= t('.privacy') %></div>
+          <div class="flex">
+            <div>
+              <div class="form-check">
+                <%= form.radio_button :privacy, :draft, class: "form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" %>
+                <%= form.label :privacy, t('.private'), value: :draft, class: "form-check-label inline-block text-gray-800" %>
+              </div>
+              <div class="form-check">
+                <%= form.radio_button :privacy, :course, class: "form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" %>
+                <%= form.label :privacy, t('.only_courses'), value: :course, class: "form-check-label inline-block text-gray-800" %>
+              </div>
+              <div class="form-check">
+                <%= form.radio_button :privacy, :open, checked: true, class: "form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" %>
+                <%= form.label :privacy, t('.public'), value: :open, class: "form-check-label inline-block text-gray-800" %>
+              </div>
+            </div>
+          </div>
+          <div class="my-5" data-controller='image-upload'>
+            <div class="font-bold mb-1"><%= t('.thumbnail') %></div>
+            <%= form.file_field :thumbnail, 'data-image-upload-target': 'input', 'data-action': 'image-upload#changed' %>
+            <div class="mt-2">
+              <% if @article.thumbnail.attached? %>
+                <div class="overflow-hidden">
+                  <%= image_tag @article.thumbnail.variant(resize_to_limit: [250, 200]),
+                  'data-image-upload-target': 'image', class: "rounded-lg" if @article.thumbnail.attached? %>
+                </div>
+              <% else %>
+                <div class="border rounded-lg bg-gray-200 overflow-hidden" style="width: 250px; height: 200px;">
+                  <%= content_tag :img, nil, src: nil, 'data-image-upload-target': 'image' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+        
     </div>
   <% end %>
+</main>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="field article-field mb-8">
-    <%= form.label :content, style: "display: block" %>
-    <%= form.rich_text_area :content %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
-<% end %>
