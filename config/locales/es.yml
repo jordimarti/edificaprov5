@@ -183,7 +183,27 @@ es:
       title: "Título"
       save_article: "Guardar artículo"
       article: "Artículo"
+      thumbnail: "Imagen miniatura"
       privacy: "Privacidad"
       private: "Privado"
       only_courses: "Sólo en cursos"
+      public: "Público"
+  courses:
+    list:
+      title_courses: "Cursos"
+      new_course: "Nuevo curso"
+    new:
+      new_course: "Nuevo curso"
+      courses: "Cursos"
+    edit:
+      edit_course: "Editar curso"
+      courses: "Cursos"
+    form:
+      title: "Título"
+      description: "Descripción"
+      save_course: "Guardar curso"
+      course: "Curso"
+      thumbnail: "Imagen miniatura"
+      visibility: "Visibilidad"
+      hidden: "Oculto"
       public: "Público"

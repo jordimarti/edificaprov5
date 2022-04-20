@@ -7,4 +7,7 @@ class Course < ApplicationRecord
   has_many :course_items, -> { order(position: :asc) }, dependent: :destroy
 
   validates :title, presence: true
+  has_one_attached :thumbnail
+
+  enum privacy: [:draft, :open]
 end

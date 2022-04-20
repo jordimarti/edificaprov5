@@ -7,4 +7,6 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   has_one_attached :thumbnail
+
+  enum privacy: [:draft, :course, :open]
 end

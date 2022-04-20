@@ -163,9 +163,29 @@ ca:
       title: "Títol"
       save_article: "Guardar article"
       article: "Article"
+      thumbnail: "Imatge miniatura"
       privacy: "Privacitat"
       private: "Privat"
       only_courses: "Només als cursos"
+      public: "Públic"
+  courses:
+    list:
+      title_courses: "Cursos"
+      new_course: "Nou curs"
+    new:
+      new_course: "Nou curs"
+      courses: "Cursos"
+    edit:
+      edit_course: "Editar curs"
+      courses: "Cursos"
+    form:
+      title: "Títol"
+      description: "Descripció"
+      save_course: "Guardar curs"
+      course: "Curs"
+      thumbnail: "Imatge miniatura"
+      visibility: "Visibilitat"
+      hidden: "Ocult"
       public: "Públic"
 
 
