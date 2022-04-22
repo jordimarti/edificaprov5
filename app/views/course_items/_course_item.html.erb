@@ -9,9 +9,9 @@
       </div>
     </div>
   <% end %>
-<% elsif course_item.category == "chapter" %>
+<% elsif course_item.category == "section" %>
   <%= content_tag :div, id: dom_id(course_item), data: { sgid: course_item.to_sgid_param }, class: "bg-gray-300 px-2 py-1 my-1 border font-bold" do %>
-    <%= course_item.name %> <span class="text-sm text-gray-600">- chapter</span>
+    <%= course_item.name %> <span class="text-sm text-gray-600">- section</span>
   <% end %>
 <% elsif course_item.category == "quizz" %>
   <%= content_tag :div, id: dom_id(course_item), data: { sgid: course_item.to_sgid_param }, class: "bg-gray-100 px-4 py-1 my-1 border" do %>

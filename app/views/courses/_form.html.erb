@@ -36,8 +36,7 @@
             <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
           </div>
 
-          <%= turbo_stream_from :course_items %>
-          <%= turbo_frame_tag "course_items_module", src: course_items_path(id: params[:id]) %>
+          <%= link_to t('.course_contents'), course_items_path(id: @course) %>
 
         </div>
       </div>

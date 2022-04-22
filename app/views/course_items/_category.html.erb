@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "new_course_item" do %>
+  <div class="flex mt-4">
+    <%= link_to "New section", new_course_item_path(course_id: @course.id, category: 'section'), class: "bg-blue-600 px-4 py-2 text-white rounded mx-2" %>
+    <%= link_to "New lesson", new_course_item_path(course_id: @course.id, category: 'lesson'), class: "bg-blue-600 px-4 py-2 text-white rounded mx-2" %>
+    <%= link_to "New quizz", new_course_item_path(course_id: @course.id, category: 'quizz'), class: "bg-blue-600 px-4 py-2 text-white rounded mx-2" %>
+  </div>
+<% end %>

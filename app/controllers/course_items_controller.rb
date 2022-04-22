@@ -13,6 +13,7 @@ class CourseItemsController < ApplicationController
   def new
     @course_item = CourseItem.new
     @course = Course.find(params[:course_id])
+    @category = params[:category]
   end
 
   def edit
@@ -26,13 +27,7 @@ class CourseItemsController < ApplicationController
     
     respond_to do |format|
       if @course_item.save
-        format.turbo_stream {
-          render turbo_stream: turbo_stream.replace(
-            "new_course_item",
-            partial: "course_items/form",
-            locals: { course_item: CourseItem.new, course_id: @course_item.course_id }
-          )
-        }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @community_comment.errors, status: :unprocessable_entity }
@@ -43,6 +38,10 @@ class CourseItemsController < ApplicationController
   def update
     @course_item = GlobalID::Locator.locate_signed(params[:sgid])
     @course_item.insert_at(params[:position])
+  end
+
+  def category
+    @course = Course.find(params[:course_id])
   end
 
   private

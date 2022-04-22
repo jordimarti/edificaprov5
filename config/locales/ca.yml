@@ -175,6 +175,8 @@ ca:
     new:
       new_course: "Nou curs"
       courses: "Cursos"
+      title: "Títol"
+      save_course: "Crear curs"
     edit:
       edit_course: "Editar curs"
       courses: "Cursos"

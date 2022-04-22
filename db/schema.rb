@@ -181,7 +181,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_082743) do
   create_table "course_items", force: :cascade do |t|
     t.bigint "course_id", null: false
     t.string "name"
-    t.string "category"
+    t.integer "category"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

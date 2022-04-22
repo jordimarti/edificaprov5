@@ -1,1 +1,4 @@
-<%= render "form", course_item: @course_item, course_id: params[:course_id] %>
+NEW
+<%= turbo_frame_tag "new_course_item" do %>
+  <%= render "form", course_item: @course_item, course_id: params[:course_id], category: params[:category] %>
+<% end %>

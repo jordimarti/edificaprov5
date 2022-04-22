@@ -195,6 +195,8 @@ es:
     new:
       new_course: "Nuevo curso"
       courses: "Cursos"
+      title: "Título"
+      save_course: "Crear curso"
     edit:
       edit_course: "Editar curso"
       courses: "Cursos"

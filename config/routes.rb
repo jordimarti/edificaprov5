@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'channel/:channel_id/library', to: 'channels#library', as: :library
   resources :library_items
   resources :library_folders
+  get 'course_items/category'
   resources :course_items
   resources :question_comments do
     resource :question_comment_votes, only: :show
