@@ -63,7 +63,7 @@
         <h2 class="font-bold text-xl mb-8"><%= @course.title %></h2>
         <%= turbo_stream_from :course_items %>
         <%= turbo_frame_tag "items_#{dom_id(@course)}" do %>
-          <div data-controller="position">
+          <div data-controller="position" id=<%= %"existing_items_#{dom_id(@course)}"%>>
             <%= render @course_items %>
           </div>
         <% end %>
