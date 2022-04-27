@@ -17,7 +17,7 @@
 
         <% @courses.each do |course| %>
           <div class="border-b py-4">
-            <%= link_to course.title, edit_course_path(course), class: "hover:text-gray-600" %>
+            <%= link_to course.title, courses_info_path(id: course.id), class: "hover:text-gray-600" %>
           </div>
         <% end %>
       </main>

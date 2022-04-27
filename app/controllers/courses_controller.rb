@@ -15,6 +15,10 @@ class CoursesController < ApplicationController
     @courses = Course.where(channel_id: current_channel.id)
   end
 
+  def info
+    @course = Course.find(params[:id])
+  end
+
   # GET /courses/new
   def new
     @course = Course.new

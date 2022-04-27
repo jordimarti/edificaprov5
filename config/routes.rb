@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   get 'communities/list'
   resources :communities
+  get 'courses/info'
   get 'courses/list'
   resources :courses
   resources :webhooks, only: [:create]

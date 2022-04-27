@@ -178,7 +178,7 @@ ca:
       title: "Títol"
       save_course: "Crear curs"
     edit:
-      edit_course: "Editar curs"
+      course_details: "Detalls del curs"
       courses: "Cursos"
     form:
       title: "Títol"

@@ -198,7 +198,7 @@ es:
       title: "Título"
       save_course: "Crear curso"
     edit:
-      edit_course: "Editar curso"
+      course_details: "Detalles del curso"
       courses: "Cursos"
     form:
       title: "Título"
