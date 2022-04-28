@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_20_082743) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_28_083307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -245,6 +245,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_082743) do
     t.index ["library_folder_id"], name: "index_library_items_on_library_folder_id"
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.text "body"
+    t.bigint "parent_id"
+    t.bigint "article_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_pages_on_article_id"
+    t.index ["parent_id"], name: "index_pages_on_parent_id"
+  end
+
   create_table "question_comment_votes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "question_comment_id", null: false
@@ -357,6 +370,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_082743) do
   add_foreign_key "lessons", "courses"
   add_foreign_key "library_folders", "channels"
   add_foreign_key "library_items", "library_folders"
+  add_foreign_key "pages", "articles"
+  add_foreign_key "pages", "pages", column: "parent_id"
   add_foreign_key "question_comment_votes", "question_comments"
   add_foreign_key "question_comment_votes", "users"
   add_foreign_key "question_comments", "questions"

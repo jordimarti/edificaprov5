@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pages
   get 'channel/:channel_id/library', to: 'channels#library', as: :library
   resources :library_items
   resources :library_folders
